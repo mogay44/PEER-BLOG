@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Rubik+Dirt&family=Rubik+Distressed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/posts.css">
+    <link rel="stylesheet" href="../static/register.css">
+    <!-- <link rel="stylesheet" href="../static/createPost.css"> -->
+    <link rel="stylesheet" href="../static/login.css">
+    <link rel="stylesheet" href="../static/index.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='update_post.css') }}"/>
+    <title>{% block title %} {% endblock %}- FlaskApp</title>
+</head>
+<body>
+    <nav class="naviagation">
+        <div class="logo--alx">
+            <a href="{{ url_for('index') }}"><img class="logo-image" src="../static/logo.png" alt="heyy" class=""></a>
+          <a href="{{ url_for('index') }}"><h3 class="logo-text">PEER</h3></a>
+        </div>
+        <ul class="nav--links">
+            <a href="#"><li>About</li></a>
+            <a href="{{ url_for('post') }}"><li>Home</li></a>
+            <a href="{{ url_for('createpost') }}"><li>Write</li></a>
+            <a href="{{ url_for('login') }}"><li>Sign out</li></a>
+        </ul>
+    </nav>
+    <main class="main">
+        {% for message in get_flashed_messages() %}
+            <label>
+                <input type="checkbox" class="alertCheckbox" autocomplete="off" />
+                <div class="alert warning">
+                <span class="alertClose">X</span>
+                <span class="alertText">{{ message }}
+                    <br class="clear"/></span>
+                </div>
+            </label>
+        {% endfor %}
+    </main>
+        <form  id="mainSection" method="post">
+            <div>
+                <h1>New Post</h1>
+                <hr>
+                <br><br>
+                <label class="lables" for="">Title</label>
+                <br>
+                <input type="text" class="section1" name="title" id="Pass" value="{{ request.form['title'] }}" >
+                <br><br>
+                <label class="lables" for="">Content</label>
+                <br>
+                <textarea name="content" class="section2" cols="30" rows="10">{{ request.form['content'] }}</textarea>
+                <br><br>
+                <button id="section3" type="submit">Post</button> 
+            </div>
+        </form>
+</body>
+</html>
