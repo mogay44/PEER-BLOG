@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import sqlite3
 from flask import Flask, render_template, request, url_for, flash, redirect, abort, session
-from waitress import serve
 from datetime import datetime
 
 application = Flask(__name__)
@@ -132,5 +131,4 @@ def logout():
     return redirect(url_for('login'))
 
 if __name__ == "__main__":
-    application.run(host='0.0.0.0', port=5000)
     application.run(debug=True)
