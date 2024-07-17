@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, url_for, flash, redirect, abo
 from datetime import datetime
 
 application = Flask(__name__)
-application.config['SECRET_KEY'] = 'd6bb525dd12c9953922f61784e785ba147f643b5d515ba0f'
+application.config['SECRET_KEY'] = 'd6bb525dd12c9953922f61784e785ba147f643b5d515ba0j'
 def get_db_connection():
     conn = sqlite3.connect('test.db')
     conn.row_factory = sqlite3.Row
